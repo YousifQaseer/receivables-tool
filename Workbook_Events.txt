@@ -1,0 +1,20 @@
+
+Private Sub Workbook_Open()
+
+    MsgBox "Receivables Automation Tool Loaded", vbInformation
+
+End Sub
+
+
+Private Sub Worksheet_Change(ByVal Target As Range)
+
+    If Not Intersect(Target, Range("B:B")) Is Nothing Then
+
+        If Target.Value < 0 Then
+            MsgBox "Amount cannot be negative!", vbCritical
+            Application.Undo
+        End If
+
+    End If
+
+End Sub
